@@ -21,7 +21,7 @@ With `gcmd` you can give names to command combinations and use it without troubl
 
 Saving this command is easy as
 ```
-gcmd -save -i httpx-response "jq .serverResponse | sed 's/\\\r\\\n/\\n/g;s/\"//g'"
+$ gcmd -save -i httpx-response "jq .serverResponse | sed 's/\\\r\\\n/\\n/g;s/\"//g'"
 ```
 Now I can use it as
 ```
