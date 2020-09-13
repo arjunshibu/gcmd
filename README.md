@@ -15,7 +15,7 @@ To get only the HTTP response of the host from this file I use
 ```
 $ cat data.json | jq .serverResponse | sed "s/\\\r\\\n/\\n/g;s/\"//g"
 ```
-It's easy to mess up with commands like this especially when having complex *Regex* patterns.
+It's easy to mess up commands like this especially when having complex *Regex* patterns.
 
 With `gcmd` you can give names to command combinations and use it without trouble.
 
