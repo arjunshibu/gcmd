@@ -9,7 +9,7 @@ For example I use [httpx](https://github.com/projectdiscovery/httpx) to probe fo
 ```
 $ echo hackerone.com | httpx -silent -json -response-in-json -o data.json
 ```
-Full output of this command is **here**
+Full output of this command is [here](https://raw.githubusercontent.com/arjunshibu/gcmd/master/data.json)
 
 To get only the HTTP response of the host from this file I use
 ```
