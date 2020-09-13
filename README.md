@@ -49,7 +49,7 @@ Available switches are:
 | -rm                     | Remove a command                                        | gcmd -rm test-cmd                                  |
 
 ### Command Files
-You can create config directory in `~/.config/gcmd` or `~/.gcmd`
+You can create config directory as `~/.config/gcmd` or `~/.gcmd`
 
 Command files are stored as JSON files like this:
 ```
