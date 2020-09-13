@@ -1,0 +1,9 @@
+{
+   "cmds": [
+      {
+         "name": "grep",
+         "args": "-E '^[0-9]*/(tcp|udp)'"
+      }
+   ],
+   "stdin": true
+}

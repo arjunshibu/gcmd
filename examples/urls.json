@@ -1,0 +1,9 @@
+{
+   "cmds": [
+      {
+         "name": "grep",
+         "args": "-oE 'https?://[^ \")]+'"
+      }
+   ],
+   "stdin": true
+}

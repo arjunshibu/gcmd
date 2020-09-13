@@ -1,0 +1,13 @@
+{
+   "cmds": [
+      {
+         "name": "jq",
+         "args": ".serverResponse"
+      },
+      {
+         "name": "sed",
+         "args": "'s/\\\\r\\\\n/\\n/g;s/\"//g'"
+      }
+   ],
+   "stdin": true
+}
