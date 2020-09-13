@@ -83,7 +83,7 @@ httpx-response       test-cmd
 #### Bash
 Place this in `~/.bashrc`
 ```
-source ~/go/src/github.com/arjunshibu/gcmd/autocomplete/gcmd.bash
+source ~/go/src/github.com/arjunshibu/gcmd/autocompletion/gcmd.bash
 ```
 #### Zsh
 Enable autocomplete if haven't done (no need if you have oh-my-zsh) by placing in `~/.zshrc`
@@ -92,7 +92,7 @@ autoload -U compaudit && compinit
 ```
 Place this in `~/.zshrc`
 ```
-source ~/go/src/github.com/arjunshibu/gcmd/autocomplete/gcmd.zsh
+source ~/go/src/github.com/arjunshibu/gcmd/autocompletion/gcmd.zsh
 ```
 
 ## Contribution
