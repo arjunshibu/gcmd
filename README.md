@@ -1,5 +1,5 @@
 # gcmd
-A command line wrapper written in Go to avoid commonly used one-liner commands.
+A command-line wrapper written in Go to avoid commonly used one-liner commands.
 
 Inspired by @tomnomnom 's [gf](https://github.com/tomnomnom/gf)
 
