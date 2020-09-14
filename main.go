@@ -34,10 +34,10 @@ func main() {
     flag.Parse()
 
     if listMode {
-		cmds, err := getCmds()
+	cmds, err := getCmds()
 
         if err != nil {
-            fmt.Fprintln(os.Stderr, err)
+            fmt.Fprintln(os.Stderr, err.Error())
             return
         }
 
@@ -48,9 +48,9 @@ func main() {
     dir, err := getCmdsDir()
 
     if err != nil {
-        fmt.Fprintln(os.Stderr, err)
+        fmt.Fprintln(os.Stderr, err.Error())
         return
-	}
+    }
 
     cmdName := flag.Arg(0)
     path := filepath.Join(dir, cmdName + ".json")
@@ -73,36 +73,35 @@ func main() {
         cmd, err := parseCmd(flag.Arg(1))
 
         if err != nil {
-            fmt.Fprintln(os.Stderr, err)
+            fmt.Fprintln(os.Stderr, err.Error())
             return
         }
 
-		cmds = packCmds(cmd)
+	cmds = packCmds(cmd)
 
         if stdinMode {
             cmds.Stdin = true
         }
 
-
         file, err := os.OpenFile(path, os.O_RDWR|os.O_CREATE|os.O_EXCL, 0666)
 
-		if err != nil {
-			fmt.Fprintf(os.Stderr, "Failed to create command file %s\n", path)
+	if err != nil {
+	    fmt.Fprintf(os.Stderr, "Failed to create command file %s\n", path)
             return
-		}
+	}
 
-		defer file.Close()
+	defer file.Close()
 
         encoder := json.NewEncoder(file)
         encoder.SetIndent("", "   ")
         err = encoder.Encode(&cmds)
 
         if err != nil {
-            fmt.Fprintf(os.Stderr, "Failed to write command file: %s", path)
+            fmt.Fprintf(os.Stderr, "Failed to write command file %s\n", path)
             return
         }
 
-		fmt.Println("Command saved")
+	fmt.Println("Command saved")
         return
     }
 
@@ -167,28 +166,28 @@ func main() {
 }
 
 func getCmdsDir() (string, error) {
-	user, err := user.Current()
+    user, err := user.Current()
 
     if err != nil {
-		return "", err
-	}
+	return "", err
+    }
 
-	path := filepath.Join(user.HomeDir, ".config/gcmd")
+    path := filepath.Join(user.HomeDir, ".config/gcmd")
 
-	if _, err := os.Stat(path); !os.IsNotExist(err) {
-		return path, nil
-	}
+    if _, err := os.Stat(path); !os.IsNotExist(err) {
+	return path, nil
+    }
 
-	return filepath.Join(user.HomeDir, ".gcmd"), nil
+    return filepath.Join(user.HomeDir, ".gcmd"), nil
 }
 
 func getCmds() ([]string, error) {
-	dir, err := getCmdsDir()
+    dir, err := getCmdsDir()
     out := []string{}
 
-	if err != nil {
+    if err != nil {
         return out, err
-	}
+    }
 
     files, err := filepath.Glob(dir + "/*.json")
 
@@ -205,7 +204,7 @@ func getCmds() ([]string, error) {
 }
 
 func parseCmd(cmd string) ([]string, error) {
-    cmds := strings.Split(cmd, "|")
+    cmds := strings.Split(cmd, " | ")
 
     for i, cmd := range cmds {
         cmds[i] = strings.TrimSpace(cmd)
@@ -226,15 +225,15 @@ func packCmds(cmd []string) (Cmds) {
     var cmds Cmds
     cmds.Cmds = make([]Cmd, len(cmd))
 
-	for i, c := range cmd {
-		cmdArr := strings.SplitN(c, " ", 2)
+    for i, c := range cmd {
+	cmdArr := strings.SplitN(c, " ", 2)
         cmds.Cmds[i].Name = cmdArr[0]
         if len(cmdArr) == 1 {
-			cmds.Cmds[i].Args = ""
+	    cmds.Cmds[i].Args = ""
         } else {
             cmds.Cmds[i].Args = cmdArr[1]
         }
     }
 
-	return cmds
+    return cmds
 }

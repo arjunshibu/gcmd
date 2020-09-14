@@ -94,6 +94,20 @@ Place this in `~/.zshrc`
 ```
 source ~/go/src/github.com/arjunshibu/gcmd/autocompletion/gcmd.zsh
 ```
+## Issues
+
+When saving commands, seperate pipes with whitespaces like `find . | wc -l` instead of `find .|wc -l` because if you do so, it will get saved as
+```
+{
+   "cmds": [
+      {
+         "name": "find",
+         "args": ".|cat|wc -l"
+      }
+   ]
+}
+```
+This may not be a problem, but avoid it.
 
 ## Contribution
 
