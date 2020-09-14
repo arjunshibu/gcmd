@@ -146,7 +146,7 @@ func main() {
         panic(err)
     }
 
-    execCmd := exec.Command("sh", "-c", cmdStr)
+    execCmd := exec.Command("bash", "-c", cmdStr)
     execCmd.Stdout = os.Stdout
     execCmd.Stderr = os.Stderr
 
