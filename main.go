@@ -160,7 +160,7 @@ func main() {
     }
 
     if err := execCmd.Run(); err != nil {
-        fmt.Fprintln(os.Stderr, string(err.Error()))
+        // fmt.Fprintln(os.Stderr, string(err.Error()))
         return
     }
 }
