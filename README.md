@@ -17,7 +17,7 @@ $ cat data.json | jq .serverResponse | sed "s/\\\r\\\n/\\n/g;s/\"//g"
 ```
 It's easy to mess up commands like this especially when having complex *Regex* patterns.
 
-With `gcmd` you can give names to command combinations and use it without trouble.
+With `gcmd` you can give names to command combinations and reuse them anytime.
 
 Saving this command is easy as
 ```
@@ -39,7 +39,7 @@ $ go get -v github.com/arjunshibu/gcmd
 $ gcmd -h
 ```
 This will show help for the tool.
-Available switches are:
+Available switches are
 | Flag                    | Description                                             | Example                                            |
 |-------------------------|---------------------------------------------------------|----------------------------------------------------|
 | -ls                     | List available commands                                 | gcmd -ls                                           |
@@ -51,7 +51,7 @@ Available switches are:
 ### Command Files
 You can create config directory as `~/.config/gcmd` or `~/.gcmd`
 
-Command files are stored as JSON files like this:
+Command files are stored as JSON files like this
 ```
 $ cat ~/.gcmd/httpx-response.json
 {
@@ -108,6 +108,8 @@ When saving commands, seperate pipes with whitespaces like `find . | wc -l` inst
 }
 ```
 This may not be a problem, but avoid it.
+#
+gcmd cannot run commands in background. Eg: `vim &`, because it run commands as `bash -c "command"`.
 
 ## Contribution
 
