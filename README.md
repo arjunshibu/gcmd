@@ -13,7 +13,7 @@ Full output of this command is [here](https://raw.githubusercontent.com/arjunshi
 
 To get only the HTTP response of the host from this file I use
 ```
-$ cat data.json | jq .serverResponse | sed "s/\\\r\\\n/\\n/g;s/\"//g"
+$ cat data.json | jq -r .serverResponse | sed "s/\\\r\\\n/\\n/g"
 ```
 It's easy to mess up commands like this especially when having complex *Regex* patterns.
 
@@ -21,7 +21,7 @@ With `gcmd` you can give names to command combinations and reuse them anytime.
 
 Saving this command is easy as
 ```
-$ gcmd -save -i httpx-response "jq .serverResponse | sed 's/\\\r\\\n/\\n/g;s/\"//g'"
+$ gcmd -save -i httpx-response 'jq -r .serverResponse | sed "s/\\\r\\\n/\\n/g"'
 ```
 Now I can use it as
 ```
