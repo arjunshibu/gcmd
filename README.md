@@ -62,7 +62,7 @@ $ cat ~/.gcmd/httpx-response.json
       },
       {
          "name": "sed",
-         "args": "'s/\\\\r\\\\n/\\n/g;s/\"//g'"
+         "args": "'s/\\\\r\\\\n/\\n/g'"
       }
    ],
    "stdin": true
